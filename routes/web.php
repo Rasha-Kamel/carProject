@@ -18,3 +18,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//Admin Routes
+Route::view('admin/users','admin.users');
