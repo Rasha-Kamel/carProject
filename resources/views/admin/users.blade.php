@@ -1,6 +1,7 @@
 @extends('admin.layout')
 @section('title','All Users')
 @section('content')
+
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">

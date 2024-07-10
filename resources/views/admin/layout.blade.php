@@ -62,20 +62,31 @@
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="users.blade.php">Users List</a></li>
-										<li><a href="addUser.blade.php">Add User</a></li>
+										<li><a href="{{route('allusers')}}">Users List</a></li>
+										<li><a href="{{route('addusers')}}">Add User</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-edit"></i> Categories <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="addCategory.blade.php">Add Category</a></li>
-										<li><a href="categories.blade.php">Categories List</a></li>
+										<li><a href="{{route('addCategory')}}">Add Category</a></li>
+										<li><a href="{{route('allCartegories')}}">Categories List</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="addCar.blade.php">Add Car</a></li>
-										<li><a href="cars.blade.php">Cars List</a></li>
+										<li><a href="{{route('addCar')}}">Add Car</a></li>
+										<li><a href="{{route('allCars')}}">Cars List</a></li>
+									</ul>
+								</li>
+                <li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="{{route('addTest')}}">Add Testimonials</a></li>
+										<li><a href="{{route('editTest')}}">Edit Testimonials</a></li>
+									</ul>
+								</li>
+                <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="{{route('allMessages')}}">Messages</a></li>
 									</ul>
 								</li>
 							</ul>
