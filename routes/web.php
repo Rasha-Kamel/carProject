@@ -58,3 +58,6 @@ Route::view('admin/editTest','admin.editTestimonials')->name('editTest');
 
 Route::view('admin/allMessages','admin.messages')->name('allMessages');
 Route::view('admin/showMessage','admin.showMessage')->name('showMessage');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
