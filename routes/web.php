@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,17 +22,35 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //Admin Routes
-Route::view('admin/allusers','admin.users')->name('allusers');
-Route::view('admin/addUser','admin.addUser')->name('addusers');
-Route::view('admin/editUser','admin.editUser')->name('editusers');
+//UserController
+Route::get('admin/allusers',[UserController::class,'index'])->name('allusers');
+Route::get('admin/addUser',[UserController::class,'create'])->name('addusers');
+Route::post('admin/storeUser',[UserController::class,'store'])->name('storeUser');
+Route::get('admin/editUser/{id}',[UserController::class,'edit']);
+Route::put('admin/updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
+
+
+
+//CategoryController
+Route::get('admin/allCartegories',[CategoryController::class,'index'])->name('allCartegories');
+Route::get('admin/addCategory',[CategoryController::class,'create'])->name('addCategory');
+Route::post('admin/storeCategory',[CategoryController::class,'store'])->name('storeCategory');
+Route::get('admin/editCategory/{id}',[CategoryController::class,'edit']);
+Route::put('admin/updateCategory/{id}',[CategoryController::class, 'update'])->name('updateCategory');
+
+
+
+
+
 
 Route::view('admin/allCars','admin.cars')->name('allCars');
 Route::view('admin/addCar','admin.addCar')->name('addCar');
 Route::view('admin/editCar','admin.editCar')->name('editCar');
 
-Route::view('admin/allCartegories','admin.categories')->name('allCartegories');
-Route::view('admin/addCategory','admin.addCategory')->name('addCategory');
-Route::view('admin/editCategory','admin.editCategory')->name('editCategory');
+
+
+
+
 
 Route::view('admin/allTest','admin.testimonials')->name('allTest');
 Route::view('admin/addTest','admin.addTestimonials')->name('addTest');
