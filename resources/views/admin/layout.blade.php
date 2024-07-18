@@ -81,7 +81,7 @@
                 <li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{route('addTest')}}">Add Testimonials</a></li>
-										<li><a href="{{route('editTest')}}">Edit Testimonials</a></li>
+										<li><a href="{{route('allTest')}}">Testimonials List</a></li>
 									</ul>
 								</li>
                 <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>

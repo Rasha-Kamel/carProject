@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -68,8 +69,16 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(string $id):RedirectResponse
     {
-        //
+        $cars = Car::get();
+        foreach($cars as $car){           
+            if($car->category_id == $id){      //if category contain cars dont delete and redirect the same page
+               
+                return redirect('/admin/allCartegories');
+            }
+        }
+        Category::where('id',$id)->delete();       //if category empty->delete it
+        return redirect('/admin/allCartegories');   
     }
 }

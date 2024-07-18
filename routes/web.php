@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\TestimonialController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +23,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
+
 //Admin Routes
 //UserController
 Route::get('admin/allusers',[UserController::class,'index'])->name('allusers');
@@ -37,24 +41,24 @@ Route::get('admin/addCategory',[CategoryController::class,'create'])->name('addC
 Route::post('admin/storeCategory',[CategoryController::class,'store'])->name('storeCategory');
 Route::get('admin/editCategory/{id}',[CategoryController::class,'edit']);
 Route::put('admin/updateCategory/{id}',[CategoryController::class, 'update'])->name('updateCategory');
+Route::get('admin/deleteCategory/{id}',[CategoryController::class,'destroy']);
 
 
 
+//CarController
+Route::get('admin/allCars',[CarController::class,'index'])->name('allCars');
+Route::get('admin/addCar',[CarController::class,'create'])->name('addCar');
+Route::post('admin/storeCar',[CarController::class,'store'])->name('storeCar');
+Route::get('admin/editCar/{id}',[CarController::class,'edit']);
+Route::put('admin/updateCar/{id}',[CarController::class, 'update'])->name('updateCar');
+Route::get('admin/deleteCar/{id}',[CarController::class,'destroy']);
 
 
-
-Route::view('admin/allCars','admin.cars')->name('allCars');
-Route::view('admin/addCar','admin.addCar')->name('addCar');
-Route::view('admin/editCar','admin.editCar')->name('editCar');
-
-
-
-
-
-
-Route::view('admin/allTest','admin.testimonials')->name('allTest');
-Route::view('admin/addTest','admin.addTestimonials')->name('addTest');
-Route::view('admin/editTest','admin.editTestimonials')->name('editTest');
+//TestimonialController
+Route::get('admin/allTestimonials',[TestimonialController::class,'index'])->name('allTest');
+Route::get('admin/addTestimonial',[TestimonialController::class,'create'])->name('addTest');
+Route::post('admin/storeTestimonial',[TestimonialController::class,'store'])->name('storeTest');
+Route::get('admin/editTestimonial',[TestimonialController::class,'edit']);
 
 Route::view('admin/allMessages','admin.messages')->name('allMessages');
 Route::view('admin/showMessage','admin.showMessage')->name('showMessage');

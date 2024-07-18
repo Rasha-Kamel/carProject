@@ -46,19 +46,20 @@
 						</div>
 						<div class="x_content">
 							<br />
-							<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+							<form id="demo-form2" action="{{route('storeTest')}}" method="post" data-parsley-validate class="form-horizontal form-label-left">
+								@csrf
 								<div class="item form-group">
 									<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 ">
-										<input type="text" id="name" required="required" class="form-control ">
+										<input type="text" id="name"  name="name" required="required" class="form-control ">
 									</div>
 								</div>
 								<div class="item form-group">
 									<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Position <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 ">
-										<input type="text" id="position" required="required" class="form-control ">
+										<input type="text" id="position" name="position" required="required" class="form-control ">
 									</div>
 								</div>
 								<div class="item form-group">
@@ -73,7 +74,7 @@
 									<label class="col-form-label col-md-3 col-sm-3 label-align">Published</label>
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" class="flat">
+											<input type="checkbox" name="published" value="Yes" class="flat">
 										</label>
 									</div>
 								</div>

@@ -61,20 +61,20 @@
                     <tr>
                       <td>First Name and Last Name</td>
                       <td>mail@example.com</td>
-                      <td><img src="./images/edit.png" alt="Edit"></td>
-                      <td><img src="./images/delete.png" alt="Delete"></td>
+                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
+                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
                     </tr>
                     <tr>
                       <td>First Name and Last Name</td>
                       <td>mail@example.com</td>
-                      <td><img src="./images/edit.png" alt="Edit"></td>
-                      <td><img src="./images/delete.png" alt="Delete"></td>
+                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
+                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
                     </tr>
                     <tr>
                       <td>First Name and Last Name</td>
                       <td>mail@example.com</td>
-                      <td><img src="./images/edit.png" alt="Edit"></td>
-                      <td><img src="./images/delete.png" alt="Delete"></td>
+                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
+                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
                     </tr>
                     
                   </tbody>

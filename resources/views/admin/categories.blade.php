@@ -67,12 +67,11 @@
                           <img src="{{asset('./images/edit.png')}}" alt="Edit">
                         </a>
                       </td>
-                      <!-- <td>
+                      <td>
                         <a href="/admin/deleteCategory/{{$category->id}}">
                           <img src="{{asset('./images/delete.png')}}" alt="Edit">
                         </a>
-                      </td> -->
-                      <td><img src="{{asset('./images/delete.png')}}" alt="Edit"></td>
+                      </td>
                     </tr>
                   @endforeach  
                 </tbody>

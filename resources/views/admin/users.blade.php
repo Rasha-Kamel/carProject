@@ -65,9 +65,9 @@
                     <tr>
                       <td>{{$user->created_at}}</td>
                       <td>{{$user->name}}</td>
-                      <td>tony2023</td>
+                      <td>{{$user->user_name}}</td>
                       <td>{{$user->email}}</td>
-                      <td>Yes</td>
+                      <td>{{$user->active}}</td>
                       <td>
                         <a href="/admin/editUser/{{$user->id}}">
                           <img src="{{asset('./images/edit.png')}}" alt="Edit">

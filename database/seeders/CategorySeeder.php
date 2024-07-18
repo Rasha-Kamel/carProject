@@ -1,21 +1,18 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Category;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
 
-class UserSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-          User::factory(10)->create();
+        Category::factory()->count(5)->hascars(3)->create();
     }
 }

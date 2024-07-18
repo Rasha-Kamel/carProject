@@ -46,7 +46,7 @@
 						</div>
 						<div class="x_content">
 							<br />
-							<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('storeUser')}}" method="post">
+							<form id="demo-form2" action="{{route('storeUser')}}" method="post" data-parsley-validate class="form-horizontal form-label-left" >
 								@csrf
 								<div class="item form-group">
 									<label class="col-form-label col-md-3 col-sm-3 label-align" for="full-name">Full Name <span class="required">*</span>
@@ -72,7 +72,7 @@
 									<label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" class="flat" name="active">
+											<input type="checkbox" class="flat" name="active" value="Yes">
 										</label>
 									</div>
 								</div>

@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()            //to open addUser blade only to add new user
     {
-        return view ('admin.addUser'); 
+        return view('admin.addUser'); 
     }
 
     /**
@@ -31,10 +31,10 @@ class UserController extends Controller
     {
         $new_user = new user();
         $new_user->name = $request->fullname;
-        // $new_user->user_name = $request->username;
+        $new_user->user_name = $request->username;
         $new_user->email = $request->email;
         $new_user->password = $request->password;
-        // $new_user->active = $request->active;
+        $new_user->active = $request->active??"No";
         $new_user->save();
     
         return redirect('/admin/allusers');
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function edit(string $id)                  //to open edituser bladw with selecte id and data for this id
     {
         $user = User::findOrFail($id);
-        return view ('admin.editUser',compact('user'));
+        return view('admin.editUser',compact('user'));
     }
 
     /**
@@ -64,9 +64,9 @@ class UserController extends Controller
     {
         User::where('id',$id)->update([
             'name'=> $request->fullname,
-            // 'username'=> $request->username,
+            'user_name'=> $request->username,
             'email' =>$request->email,
-            // 'active'=> $request->active,
+            'active'=> $request->active,
             'password'=>$request->password,
         ]);
 
