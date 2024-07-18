@@ -82,7 +82,7 @@ class CarController extends Controller
         'doors' => $request->doors,
         'passengers' => $request->passengers,
         'price' => $request->price,
-        'active' => $request->active,
+        'active' => $request->active??"No",
         'image' => $request->image,
         'category' => $category->category_name,
            

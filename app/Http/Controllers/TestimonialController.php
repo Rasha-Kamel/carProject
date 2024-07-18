@@ -32,7 +32,6 @@ class TestimonialController extends Controller
     public function store(Request $request):RedirectResponse 
     {
         $new_test = new testimonial();
-        $new_test->user_id = 2;
         $new_test->name = $request->name;
         $new_test->position = $request->position;
         $new_test->content = $request->content;
@@ -56,24 +55,33 @@ class TestimonialController extends Controller
      */
     public function edit(string $id)
     {
-        // $users = User::get();
-        $testimonials = Testimonial::findOrFail($id);
-        return view('admin.editTestimonials',compact('testimonials'));
+       
+        $testimonial = Testimonial::findOrFail($id);
+        return view('admin.editTestimonials',compact('testimonial'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(Request $request, string $id):RedirectResponse 
     {
-        //
+
+        Testimonial::where('id',$id)->update([
+        'name' => $request->name ,
+        'position' => $request->position,
+        'content' => $request->content,
+        'published' => $request->published??"No",
+        'image' => $request->image,
+        ]);
+        return redirect('/admin/allTestimonials');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy(string $id):RedirectResponse
     {
-        //
+        Testimonial::where('id',$id)->delete();
+        return redirect('/admin/allTestimonials');
     }
 }

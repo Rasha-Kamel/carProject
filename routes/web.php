@@ -58,7 +58,10 @@ Route::get('admin/deleteCar/{id}',[CarController::class,'destroy']);
 Route::get('admin/allTestimonials',[TestimonialController::class,'index'])->name('allTest');
 Route::get('admin/addTestimonial',[TestimonialController::class,'create'])->name('addTest');
 Route::post('admin/storeTestimonial',[TestimonialController::class,'store'])->name('storeTest');
-Route::get('admin/editTestimonial',[TestimonialController::class,'edit']);
+Route::get('admin/editTestimonial/{id}',[TestimonialController::class,'edit']);
+Route::put('admin/updateTestimonial/{id}',[TestimonialController::class, 'update'])->name('updateTest');
+Route::get('admin/deleteTestimonial/{id}',[TestimonialController::class,'destroy']);
+
 
 Route::view('admin/allMessages','admin.messages')->name('allMessages');
 Route::view('admin/showMessage','admin.showMessage')->name('showMessage');
