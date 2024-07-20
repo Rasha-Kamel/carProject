@@ -50,16 +50,16 @@ class LoginController extends Controller
 
 
 
-    // public function user_name(Request $request)          // to login with user_name replace el email
-    // {
-    //     return ['user_name'=>$request->user_name, 'password'=>$request->password];
-    // }
+    public function username()        // to login with user_name replace el email
+    {
+        return 'user_name';
+    }
         
 
-    public function credentials(Request $request)
-    {
+    // public function credentials(Request $request)
+    // {
        
-            return ['user_name'=>$request->user_name, 'password'=>$request->password];
+    //         return ['user_name'=>$request->user_name, 'password'=>$request->password];
         
-    }
+    // }
 }

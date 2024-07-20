@@ -27,7 +27,7 @@ require __DIR__.'/auth.php';
 
 //Admin Routes
 //UserController
-Route::get('admin/allusers',[UserController::class,'index'])->name('allusers');
+Route::post('admin/allusers',[UserController::class,'index'])->name('allusers');
 Route::get('admin/addUser',[UserController::class,'create'])->name('addusers');
 Route::post('admin/storeUser',[UserController::class,'store'])->name('storeUser');
 Route::get('admin/editUser/{id}',[UserController::class,'edit']);
@@ -68,3 +68,13 @@ Route::view('admin/showMessage','admin.showMessage')->name('showMessage');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::view('index/index','index.index')->name('index');
+Route::view('index/listing','index.listing')->name('listing');
+Route::view('index/single','index.single')->name('single');
+Route::view('index/testimonials','index.testimonials')->name('testimonials');
+Route::view('index/blog','index.blog')->name('blog');
+Route::view('index/about','index.about')->name('about');
+Route::view('index/contact','index.contact')->name('contact');
