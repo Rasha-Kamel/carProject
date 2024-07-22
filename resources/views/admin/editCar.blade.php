@@ -60,7 +60,7 @@
 									<label class="col-form-label col-md-3 col-sm-3 label-align" for="content">Content <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 ">
-										<textarea id="content" name="content" value="{{$car->content}}" required="required" class="form-control">Contents</textarea>
+										<textarea id="content" name="content" value="{{$car->content}}" required="required" class="form-control">{{$car->content}}</textarea>
 									</div>
 								</div>
 								<div class="item form-group">

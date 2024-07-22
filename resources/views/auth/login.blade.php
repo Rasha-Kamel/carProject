@@ -73,8 +73,7 @@
 
 <div class="animate form login_form">
  <section class="login_content">
-            <!-- <form method="POST" action="{{ route('login') }}"> -->
-            <form method="POST" action="{{ route('allusers') }}">
+            <form method="POST" action="{{ route('login') }}">
                  @csrf
               <h1>Login Form</h1>
               <div>

@@ -58,25 +58,22 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach ($messages as $message)
                     <tr>
-                      <td>First Name and Last Name</td>
-                      <td>mail@example.com</td>
-                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
-                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
+                      <td>{{$message->first_name}} {{$message->last_name}}</td>
+                      <td>{{$message->email}}</td>
+                      <td>
+                        <a href="/admin/showMessage/{{$message->id}}">
+                          <img src="{{asset('./images/edit.png')}}" alt="Edit">
+                        </a>
+                      </td>
+                      <td>
+                        <a href="/admin/deleteMessage/{{$message->id}}">
+                          <img src="{{asset('./images/delete.png')}}" alt="Edit">
+                        </a>
+                      </td>
                     </tr>
-                    <tr>
-                      <td>First Name and Last Name</td>
-                      <td>mail@example.com</td>
-                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
-                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
-                    </tr>
-                    <tr>
-                      <td>First Name and Last Name</td>
-                      <td>mail@example.com</td>
-                      <td><img src="{{asset('./images/edit.png')}}" alt="Edit"></td>
-                      <td><img src="{{asset('./images/delete.png')}}" alt="Delete"></td>
-                    </tr>
-                    
+                    @endforeach
                   </tbody>
                 </table>
               </div>

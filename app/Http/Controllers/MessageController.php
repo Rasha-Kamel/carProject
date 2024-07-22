@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class MessageController extends Controller
 {
@@ -12,7 +13,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+      
+        $messages = Message::get();
+        return view('admin.messages',compact("messages"));
     }
 
     /**
@@ -28,15 +31,23 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_message = new message();
+        $new_message->first_name = $request->first_name;
+        $new_message->last_name = $request->last_name;
+        $new_message->email = $request->email;
+        $new_message->content = $request->content;
+        $new_message->save();
+    
+        return redirect(route('contact'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Message $message)
+    public function show(string $id)
     {
-        //
+        $message = Message::findOrFail($id);
+        return view ('admin.showMessage',compact('message'));
     }
 
     /**
@@ -58,8 +69,9 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $message)
+    public function destroy(string $id):RedirectResponse
     {
-        //
+       Message::where('id',$id)->delete();
+        return redirect('/admin/allMessages');
     }
 }

@@ -138,6 +138,7 @@
         
 
         <div class="row">
+        @for($i=0; $i<6; $i++)
           <div class="col-md-6 col-lg-4 mb-4">
 
             <div class="listing d-block  align-items-stretch">
@@ -171,8 +172,9 @@
 
             </div>
           </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
+        
+        @endfor
+          <!-- <div class="col-md-6 col-lg-4 mb-4">
 
             <div class="listing d-block  align-items-stretch">
               <div class="listing-img h-100 mr-4">
@@ -342,7 +344,7 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>

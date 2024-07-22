@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\MessageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +28,7 @@ require __DIR__.'/auth.php';
 
 //Admin Routes
 //UserController
-Route::post('admin/allusers',[UserController::class,'index'])->name('allusers');
+Route::get('admin/allusers',[UserController::class,'index'])->name('allusers');
 Route::get('admin/addUser',[UserController::class,'create'])->name('addusers');
 Route::post('admin/storeUser',[UserController::class,'store'])->name('storeUser');
 Route::get('admin/editUser/{id}',[UserController::class,'edit']);
@@ -63,8 +64,13 @@ Route::put('admin/updateTestimonial/{id}',[TestimonialController::class, 'update
 Route::get('admin/deleteTestimonial/{id}',[TestimonialController::class,'destroy']);
 
 
-Route::view('admin/allMessages','admin.messages')->name('allMessages');
-Route::view('admin/showMessage','admin.showMessage')->name('showMessage');
+//MessageController
+Route::get('admin/allMessages',[MessageController::class,'index'])->name('allMessages');
+Route::post('admin/storeMessage',[MessageController::class,'store'])->name('storeMessage');
+Route::get('admin/deleteMessage/{id}',[MessageController::class,'destroy']);
+Route::get('admin/showMessage/{id}',[MessageController::class,'show'])->name('showMessage');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
