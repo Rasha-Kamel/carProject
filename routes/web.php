@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RentcarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -77,9 +78,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::view('index/index','index.index')->name('index');
+
+Route::get('index/index',[RentcarController::class,'index'])->name('index');
+Route::get('index/single/{id}',[RentcarController::class,'single'])->name('single');
+
 Route::view('index/listing','index.listing')->name('listing');
-Route::view('index/single','index.single')->name('single');
 Route::view('index/testimonials','index.testimonials')->name('testimonials');
 Route::view('index/blog','index.blog')->name('blog');
 Route::view('index/about','index.about')->name('about');

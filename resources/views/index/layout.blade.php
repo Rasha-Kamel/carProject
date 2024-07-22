@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{asset('index/css/style.css')}}">
 
   </head>
-  
+  <
   <body>
     
     <div class="site-wrap" id="home-section">

@@ -72,7 +72,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 blog-content">
-            <img src="images/car_2.jpg" alt="" class="img-fluid p-3 mb-5 bg-white rounded">
+            <img src="/index/images/{{$car->image}}" alt="" class="img-fluid p-3 mb-5 bg-white rounded">
             
             <div class="grey-bg container-fluid">
               <section id="minimal-statistics">
@@ -92,7 +92,7 @@
                               <i class="icon-pencil primary font-large-2 float-left"></i>
                             </div>
                             <div class="media-body text-right">
-                              <h3>4</h3>
+                              <h3>{{$car->doors}}</h3>
                               <span>Doors</span>
                             </div>
                           </div>
@@ -109,7 +109,7 @@
                               <i class="icon-speech warning font-large-2 float-left"></i>
                             </div>
                             <div class="media-body text-right">
-                              <h3>4</h3>
+                              <h3>{{$car->luggage}}</h3>
                               <span>Laggage</span>
                             </div>
                           </div>
@@ -126,7 +126,7 @@
                               <i class="icon-graph success font-large-2 float-left"></i>
                             </div>
                             <div class="media-body text-right">
-                              <h3>64.89 $</h3>
+                              <h3>{{$car->price}} $</h3>
                               <span>Price</span>
                             </div>
                           </div>
@@ -157,7 +157,7 @@
 
 
             <div class="pt-5">
-              <p>Category:  <a href="#">Design</a></p>
+              <p>Category:  <a href="#">{{$car->category}}</a></p>
             </div>
 
 
@@ -286,12 +286,22 @@
             <div class="sidebar-box">
               <div class="categories">
                 <h3>Categories</h3>
-                <li><a href="#">Creatives <span>(12)</span></a></li>
+                @foreach($categories as $category)
+                <li><a href="#">{{$category->category_name}} <span>( {{$category_cars = App\Models\Car::where('category_id',$category->id)->count()}} )</span></a></li>
+                @endforeach
+              </div>
+
+              <!-- <div class="categories">
+                <h3>Categories</h3>
+                @for($i=0; $i<5; $i++)
+                <li><a href="#">{{$categories[$i]['category_name']}} <span></span></a></li>
                 <li><a href="#">News <span>(22)</span></a></li>
                 <li><a href="#">Design <span>(37)</span></a></li>
                 <li><a href="#">HTML <span>(42)</span></a></li>
                 <li><a href="#">Web Development <span>(14)</span></a></li>
-              </div>
+                @endfor
+              </div> -->
+
             </div>
             <div class="sidebar-box">
               <img src="images/person_1.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid mb-4 w-50 rounded-circle">

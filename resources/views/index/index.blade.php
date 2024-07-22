@@ -143,36 +143,37 @@
 
             <div class="listing d-block  align-items-stretch">
               <div class="listing-img h-100 mr-4">
-                <img src="images/car_6.jpg" alt="Image" class="img-fluid">
+              <!-- $img={{$cars[$i]['image']}} -->
+                <img src="/index/images/{{$cars[$i]['image']}}" alt="Image" class="img-fluid">
               </div>
               <div class="listing-contents h-100">
-                <h3>Mitsubishi Pajero</h3>
+                <!-- <h3>{{$cars[$i]['created_at']}}</h3> -->
+                <h3>{{$cars[$i]['title']}}</h3>
                 <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
+                  <strong>${{$cars[$i]['price']}}</strong><span class="mx-1">/</span>day
                 </div>
                 <div class="d-block d-md-flex mb-3 border-bottom pb-3">
                   <div class="listing-feature pr-4">
                     <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
+                    <span class="number">{{$cars[$i]['luggage']}}</span>
                   </div>
                   <div class="listing-feature pr-4">
                     <span class="caption">Doors:</span>
-                    <span class="number">4</span>
+                    <span class="number">{{$cars[$i]['doors']}}</span>
                   </div>
                   <div class="listing-feature pr-4">
                     <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
+                    <span class="number">{{$cars[$i]['passengers']}}</span>
                   </div>
                 </div>
                 <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
+                  <p>{{$cars[$i]['content']}}</p>
+                  <p><a href="{{route('single',$cars[$i]['id'])}}" class="btn btn-primary btn-sm">Rent Now</a></p>
                 </div>
               </div>
 
             </div>
           </div>
-        
         @endfor
           <!-- <div class="col-md-6 col-lg-4 mb-4">
 
