@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -25,6 +26,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Auth::routes(['verify'=> true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Admin Routes
@@ -72,18 +76,16 @@ Route::get('admin/deleteMessage/{id}',[MessageController::class,'destroy']);
 Route::get('admin/showMessage/{id}',[MessageController::class,'show'])->name('showMessage');
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
+//RentcarController
 Route::get('index/index',[RentcarController::class,'index'])->name('index');
 Route::get('index/single/{id}',[RentcarController::class,'single'])->name('single');
+Route::get('index/testimonials',[RentcarController::class,'test'])->name('testimonials');
+Route::get('index/blog',[RentcarController::class,'blog'])->name('blog');
+Route::get('index/listing',[RentcarController::class,'listing'])->name('listing');
 
-Route::view('index/listing','index.listing')->name('listing');
-Route::view('index/testimonials','index.testimonials')->name('testimonials');
-Route::view('index/blog','index.blog')->name('blog');
+
 Route::view('index/about','index.about')->name('about');
 Route::view('index/contact','index.contact')->name('contact');
+
+
+Route::get('sendemial',[MessageController::class,'send_mail']);

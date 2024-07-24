@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+// use Mail;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class MessageController extends Controller
 {
@@ -74,4 +78,14 @@ class MessageController extends Controller
        Message::where('id',$id)->delete();
         return redirect('/admin/allMessages');
     }
+
+    public function send_mail()
+    {
+        $msg = Message::find(1);
+        Mail::to('admin@gmail.com')->send(new ContactMail($msg));
+        return "Email has been sent";
+    }
+
+
+
 }

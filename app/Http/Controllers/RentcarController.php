@@ -29,4 +29,22 @@ class RentcarController extends Controller
 
     }
 
+    public function test()            //select or show all users
+    {
+        $testimonials = Testimonial::get();
+        return view ('index.testimonials',compact('testimonials'));
+    }
+
+    public function blog()            //select or show all users
+    {
+        $cars = Car::get();
+        return view ('index.blog',compact('cars'));
+    }
+
+    public function listing()            //select or show all users
+    {
+        $cars = Car::get();
+        return view ('index.listing',compact('cars'));
+    }
+
 }
