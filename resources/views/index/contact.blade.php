@@ -32,23 +32,38 @@
           <div class="col-lg-8 mb-5" >
             <form action="{{route('storeMessage')}}" method="post">
               @csrf
+              @if(session()->has('success'))
+                <h3 clas ="alert alert-success text-center" style ="color:blue;">{{session()->get('success')}}</h3>
+              @endif
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
                   <input type="text"  name="first_name" class="form-control" placeholder="First name">
+                  @error('first_name')
+                    {{$message}}
+                  @enderror
                 </div>
                 <div class="col-md-6">
                   <input type="text" name="last_name" class="form-control" placeholder="Last name">
+                  @error('last_name')
+                    {{$message}}
+                  @enderror
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
                   <input type="email" name="email" class="form-control" placeholder="Email address">
+                  @error('email')
+                    {{$message}}
+                  @enderror
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
+                  @error('content')
+                    {{$message}}
+                  @enderror
                   <textarea name="content" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
                 </div>
               </div>

@@ -35,17 +35,33 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request):RedirectResponse
     {
-        $new_message = new message();
-        $new_message->first_name = $request->first_name;
-        $new_message->last_name = $request->last_name;
-        $new_message->email = $request->email;
-        $new_message->content = $request->content;
-        $new_message->isRead = false;
-        $new_message->save();
-    
-        return redirect(route('contact'));
+        $message = [
+            'first_name.required'=>'First Name is required',
+            'first_name.string'=>'First Name should be string',
+            'last_name.required'=>'Last Name is required',
+            'last_name.string'=>'Last Name should be string',
+            'email.required'=>'Email is required',
+            'content.required'=>'Content Message is required',
+        ];
+        $data =$request->validate([
+            'first_name'=>'required|string',
+            'last_name'=>'required|string',
+            'email'=>'required|max:255',
+            'content'=>'required|string'
+        ],$message);
+       
+        $msg = Message::create([
+            'first_name' =>$data['first_name'],
+            'last_name' =>$data['last_name'],
+            'email' =>$data['email'],
+            'content' =>$data['content'],
+            'isRead'=>false,
+        ]);
+        $data = $msg->toArray();
+        Mail::to('admin@gmail.com')->send(new ContactMail($data));
+        return redirect(route('contact'))->with('success','Your Message Has Been Sent !');
     }
 
     /**
@@ -88,13 +104,6 @@ class MessageController extends Controller
     {
        Message::where('id',$id)->delete();
         return redirect('/admin/allMessages');
-    }
-
-    public function send_mail()
-    {
-        $msg = Message::find(1);
-        Mail::to('admin@gmail.com')->send(new ContactMail($msg));
-        return "Email has been sent";
     }
 
 

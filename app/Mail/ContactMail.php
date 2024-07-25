@@ -14,11 +14,10 @@ use Illuminate\Mail\Mailables\Address;
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
-
     /**
      * Create a new message instance.
      */
-    public function __construct(public Message $contmsg)
+    public function __construct(public array $data)
     {
         //
     }
@@ -29,7 +28,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address($this->contmsg->email,$this->contmsg->first_name ." ".$this->contmsg->last_name),
+            from: new Address($this->data['email'],$this->data['first_name'] ." ".$this->data['last_name']),
             subject: 'Contact Mail',
             // subject: $this->contmsg->title,
         );
@@ -42,7 +41,7 @@ class ContactMail extends Mailable
     {
         return new Content(
             view: 'emails.contact_mail',
-            with:['content'=>$this->contmsg->content]
+            with:['content'=>$this->data['content']]
         );
     }
 

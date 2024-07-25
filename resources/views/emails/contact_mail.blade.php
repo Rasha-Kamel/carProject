@@ -6,6 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    {{$contmsg->content}}
+
+   <div>
+        Name: {{$data['first_name']}}  {{$data['last_name']}}
+   </div>
+   <div>
+      Email:  {{$data['email']}}
+   </div>
+   <br/>
+   <div>
+        {{$data['content']}}
+   </div>
+
 </body>
 </html>

@@ -13,6 +13,7 @@ use App\Http\Controllers\RentcarController;
 Route::get('/', function () {
     // return view('welcome');
     return view('auth.login');
+    return view('index.index');
 });
 
 Route::get('/dashboard', function () {
@@ -85,8 +86,6 @@ Route::get('index/blog',[RentcarController::class,'blog'])->name('blog');
 Route::get('index/listing',[RentcarController::class,'listing'])->name('listing');
 
 
+
 Route::view('index/about','index.about')->name('about');
 Route::view('index/contact','index.contact')->name('contact');
-
-
-Route::get('sendemial',[MessageController::class,'send_mail']);
