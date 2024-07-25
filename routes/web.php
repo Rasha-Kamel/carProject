@@ -11,7 +11,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RentcarController;
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {

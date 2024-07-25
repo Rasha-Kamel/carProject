@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
+use App\Models\Message;
 
 class UserController extends Controller
 {
@@ -13,7 +14,9 @@ class UserController extends Controller
     public function index()            //select or show all users
     {
         $users = User::get();
-        return view ('admin.users',compact("users"));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.users',compact('users','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -21,7 +24,9 @@ class UserController extends Controller
      */
     public function create()            //to open addUser blade only to add new user
     {
-        return view('admin.addUser'); 
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.addUser',compact('unreadMsges','noUnreadMsges')); 
     }
 
     /**
@@ -54,7 +59,9 @@ class UserController extends Controller
     public function edit(string $id)                  //to open edituser bladw with selecte id and data for this id
     {
         $user = User::findOrFail($id);
-        return view('admin.editUser',compact('user'));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.editUser',compact('user','unreadMsges','noUnreadMsges'));
     }
 
     /**

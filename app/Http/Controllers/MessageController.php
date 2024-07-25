@@ -40,6 +40,7 @@ class MessageController extends Controller
         $new_message->last_name = $request->last_name;
         $new_message->email = $request->email;
         $new_message->content = $request->content;
+        $new_message->isRead = false;
         $new_message->save();
     
         return redirect(route('contact'));
@@ -51,7 +52,12 @@ class MessageController extends Controller
     public function show(string $id)
     {
         $message = Message::findOrFail($id);
+        if ($message) {
+            $message->isRead = true;
+            $message->save();
+        }
         return view ('admin.showMessage',compact('message'));
+       
     }
 
     /**

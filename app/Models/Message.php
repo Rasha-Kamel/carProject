@@ -17,6 +17,7 @@ class Message extends Model
         'last_name',
         'email',
         'content',
+        'isRead',
     ];
 
 }
