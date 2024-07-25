@@ -76,13 +76,12 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id):RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         $cars = Car::get();
         foreach($cars as $car){           
-            if($car->category_id == $id){      //if category contain cars dont delete and redirect the same page
-               
-                return redirect('/admin/allCartegories');
+            if($car->category_id == $id){      //if category contain cars dont delete and redirect the same page               
+                return redirect('/admin/allCartegories')->with('warning','Warning Message! This Category cannot be deleted.');
             }
         }
         Category::where('id',$id)->delete();       //if category empty->delete it

@@ -56,7 +56,7 @@
                     <span class="number">{{$cars[$i]['passengers']}}</span>
                   </div>
                 </div>
-                <div>
+                <div style="overflow: hidden; white-space: nowrap;">
                   <p>{{$cars[$i]['content']}}</p>
                   <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
                 </div>

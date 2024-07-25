@@ -165,8 +165,8 @@
                     <span class="number">{{$cars[$i]['passengers']}}</span>
                   </div>
                 </div>
-                <div style="overflow: auto;">
-                  <p>{{$cars[$i]['content']}}</p>
+                <div style="overflow: hidden; white-space: nowrap;">
+                  <p >{{$cars[$i]['content']}}</p>
                   <p><a href="{{route('single',$cars[$i]['id'])}}" class="btn btn-primary btn-sm">Rent Now</a></p>
                 </div>
               </div>

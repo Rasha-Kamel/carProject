@@ -30,10 +30,10 @@
                 <img src="/index/images/{{$cars[$i]['image']}}" alt="Image"
                  class="img-fluid">
               </a>
-              <div class="post-entry-1-contents">
+              <div class="post-entry-1-contents" style="overflow: hidden; white-space: nowrap;">
                 
-                <h2><a href="{{route('single',$cars[$i]['id'])}}">The best car rent in the entire planet</a></h2>
-                <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span> <a href="#">Admin</a></span>
+                <h2><a href="{{route('single',$cars[$i]['id'])}}">{{$cars[$i]['title']}}</a></h2>
+                <span class="meta d-inline-block mb-3">{{$cars[$i]['created_at']->format('d-M-y') }}<span class="mx-2">by</span> <a href="#">Admin</a></span>
                 <p>{{$cars[$i]['content']}}</p>
               </div>
             </div>

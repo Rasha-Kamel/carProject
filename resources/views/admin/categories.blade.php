@@ -48,6 +48,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                       <div class="card-box table-responsive">
+                      @if(session()->has('warning'))
+                        <span style="color: red;">{{session()->get('warning')}}</span>  
+                      @endif
               <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                   <tr>
@@ -57,8 +60,9 @@
                   </tr>
                 </thead>
 
-
+              
                 <tbody>
+               
                   @foreach ($categories as $category)
                     <tr>
                       <td>{{$category->category_name}}</td>

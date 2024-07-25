@@ -12,8 +12,8 @@ use App\Http\Controllers\RentcarController;
 
 Route::get('/', function () {
     // return view('welcome');
-    return view('auth.login');
-    return view('index.index');
+    // return view('auth.login');
+    return redirect('index/index');
 });
 
 Route::get('/dashboard', function () {
