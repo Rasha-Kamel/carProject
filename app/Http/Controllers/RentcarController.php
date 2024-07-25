@@ -13,7 +13,8 @@ class RentcarController extends Controller
     {
         $cars = Car::orderBy('created_at','DESC')->get();
         $testimonials = Testimonial::get();
-        return view ('index.index',compact('cars','testimonials'));
+        $categories = Category::get();
+        return view ('index.index',compact('cars','testimonials','categories'));
     }
 
     public function single(string $id)            //select or show all users

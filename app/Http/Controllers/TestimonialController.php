@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -15,7 +16,9 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::get();
-        return view('admin.testimonials',compact("testimonials"));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.testimonials',compact('testimonials','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -23,7 +26,9 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view('admin.addTestimonials'); 
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.addTestimonials',compact('unreadMsges','noUnreadMsges')); 
     }
 
     /**
@@ -57,7 +62,9 @@ class TestimonialController extends Controller
     {
        
         $testimonial = Testimonial::findOrFail($id);
-        return view('admin.editTestimonials',compact('testimonial'));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.editTestimonials',compact('testimonial','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -81,7 +88,10 @@ class TestimonialController extends Controller
      */
     public function destroy(string $id):RedirectResponse
     {
+
         Testimonial::where('id',$id)->delete();
-        return redirect('/admin/allTestimonials');
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return redirect('/admin/allTestimonials',compact('unreadMsges','noUnreadMsges'));
     }
 }

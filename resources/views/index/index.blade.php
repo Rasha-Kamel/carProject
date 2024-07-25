@@ -24,10 +24,9 @@
                   <div class="mb-3 mb-md-0 col-md-3">
                     <select name="" id="" class="custom-select form-control">
                       <option value="">Select Type</option>
-                      <option value="">Ferrari</option>
-                      <option value="">Toyota</option>
-                      <option value="">Ford</option>
-                      <option value="">Lamborghini</option>
+                      @foreach($categories as $category)
+                      <option value="">{{$category->category_name}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="mb-3 mb-md-0 col-md-3">

@@ -19,7 +19,9 @@ class MessageController extends Controller
     {
       
         $messages = Message::get();
-        return view('admin.messages',compact("messages"));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.messages',compact('messages','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -56,7 +58,10 @@ class MessageController extends Controller
             $message->isRead = true;
             $message->save();
         }
-        return view ('admin.showMessage',compact('message'));
+
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.showMessage',compact('message','unreadMsges','noUnreadMsges'));
        
     }
 

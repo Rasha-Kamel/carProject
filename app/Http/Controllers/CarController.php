@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Message;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +16,9 @@ class CarController extends Controller
     public function index()         //select or show all cars
     {
         $cars = Car::get();
-        return view ('admin.cars',compact("cars"));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.cars',compact('cars','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -24,7 +27,9 @@ class CarController extends Controller
     public function create()                  //to open addCar blade only to add new Car
     {
         $categories = Category::get();
-        return view ('admin.addCar',compact("categories")); 
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.addCar',compact('categories','unreadMsges','noUnreadMsges')); 
     }
 
     /**
@@ -64,7 +69,9 @@ class CarController extends Controller
     {
         $categories = Category::get();
         $car = Car::findOrFail($id);
-        return view('admin.editCar',compact('car','categories'));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view('admin.editCar',compact('car','categories','unreadMsges','noUnreadMsges'));
     }
 
     /**

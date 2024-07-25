@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Car;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -15,7 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view ('admin.categories',compact("categories"));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.categories',compact('categories','unreadMsges','noUnreadMsges'));
     }
 
     /**
@@ -23,7 +26,9 @@ class CategoryController extends Controller
      */
     public function create()                       //to open addCategory blade only to add new category
     {
-        return view ('admin.addCategory'); 
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.addCategory',compact('unreadMsges','noUnreadMsges')); 
     }
 
     /**
@@ -52,7 +57,9 @@ class CategoryController extends Controller
     public function edit(string $id)                      //to open editcategory bladw with selecte id and data for this id
     {
         $category = Category::findOrFail($id);
-        return view ('admin.editCategory',compact('category'));
+        $unreadMsges= Message::where('isRead',false)->get();
+        $noUnreadMsges= Message::where('isRead',false)->count();
+        return view ('admin.editCategory',compact('category','unreadMsges','noUnreadMsges'));
     }
 
     /**
